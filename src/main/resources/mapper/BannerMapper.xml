@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- change the namespace with respect to Mapper interface-->
+<mapper namespace="com.topdent.swl.demo.mapper.BannerMapper">
+    <select id="listBanner" resultType="com.topdent.swl.demo.model.Banner">
+        select * from banner;
+    </select>
+</mapper>

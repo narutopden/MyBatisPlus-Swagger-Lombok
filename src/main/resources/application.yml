@@ -1,0 +1,41 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/mls_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
+  application:
+    name: swagger_BlueSky
+
+
+mybatis-plus:
+  #configuration:
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/mapper/**/*.xml
+
+  # if we want to make a separate mybatisPlus configuration
+  # we need to distinguish the key word configuration with config-location
+  config-location: classpath:mybatis-plus-config.xml
+  # model reference alias to reduce => [resultType="com.topdent.swl.demo.model.Banner"] to [resultType="Banner"]
+  type-aliases-package: com.topdent.swl.demo.model
+  # default true in MP
+  #configuration:
+    #map-underscore-to-camel-case: true
+  # after adding this config we don't need to add [@TableId(value = "id",type = IdType.AUTO)] to every model class
+  global-config:
+    db-config:
+      id-type: auto
+      #marking of data as deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+          # @TableLogic in model and this property is same and we can add anyone of them
+      logic-delete-field: deleted
+
+#swaggerc customise properties od SWAGGER
+swagger:
+  enable: false  #turn off in production
+  application_name: ${spring.application.name}
+  application-version: 1.0
+  application_description: BlueSky api info
